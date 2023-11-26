@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import PostState from './components/context/post/postState';
+import UserState from './components/context/user/userState';
 
 function App() {
 
@@ -34,7 +36,11 @@ function App() {
 
   return (
     <div className="App">
+      <UserState>
+      <PostState>
        <RouterProvider router={router} />
+       </PostState>
+       </UserState>
     </div>
   );
 }
