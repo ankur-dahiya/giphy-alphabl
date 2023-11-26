@@ -1,1 +1,1 @@
-export const ITEMS_PER_PAGE = REACT_APP_POST_LIMIT || 3;
+export const ITEMS_PER_PAGE = process.env.REACT_APP_POST_LIMIT || 3;
