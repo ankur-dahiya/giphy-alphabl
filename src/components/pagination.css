@@ -1,0 +1,30 @@
+.pg-main{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+nav{
+    display: flex;
+    gap: 10px;
+}
+
+.indexes{
+    display: flex;
+    gap: 4px;
+}
+
+.index{
+    cursor: pointer;
+}
+
+.active-index{
+    background-color: violet;
+}
+
+.nav-btn{
+    cursor: pointer;
+    border: 1px solid black;
+    font-weight: bold;
+}

@@ -1,0 +1,104 @@
+/* todo: fonts */
+
+.home{
+    background-color: white;
+    border: 1px;
+    border-radius: 20px;
+    max-width: 1240px;
+    margin:auto;
+    margin-top: 40px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.searchbox{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+}
+
+.inpbox{
+    position: relative;
+    width: 100%;
+}
+
+.inpbox>img{
+    width: 25px;
+    position: absolute;
+    left: 8px;
+    top: 15px;
+}
+
+/* .searchbox>input{ */
+.inpbox>input{
+    color: black;
+    width: 100%;
+    font-weight: 500;
+    font-size: 20px;
+    background-color: var(--bg-primary);
+    border: 1px;
+    border-radius: 20px;
+    padding: 15px;
+    padding-left: 40px;
+    outline: none;
+}
+
+.searchbox>button{
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.result{
+    margin: auto;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 50px;
+    row-gap: 30px;
+}
+
+.card{
+    width: 300px;
+}
+
+.card-img{
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border: 2px;
+    border-radius: 10px;
+}
+
+.card-desc{
+    margin-top : 10px;
+    padding: 0 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-desc{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title{
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.username{
+    font-size: 16px;
+    color: var(--secondary);
+}
+
+.fav-img{
+    height: 30px;
+}
