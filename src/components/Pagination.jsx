@@ -1,7 +1,7 @@
+import { ITEMS_PER_PAGE } from "../utility/constants";
 import "./pagination.css";
 
 export default function Pagination({ page, handlePage, totalItems }) {
-  const ITEMS_PER_PAGE = 3;
   let totalpages = Math.ceil(totalItems / ITEMS_PER_PAGE);
   const getPageNumbers = () => {
     const pageNumbers = [];

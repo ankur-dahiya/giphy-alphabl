@@ -1,23 +1,61 @@
 import { useState } from "react";
 import postContext from "./postContext";
+import { ITEMS_PER_PAGE } from "../../../utility/constants";
 
-const PostState = (props)=>{
-  const fetchSearchPost = async (inpQuery,ITEMS_PER_PAGE,page)=>{
-    const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=ccoDvbbewmH3QfACnciJHswHPoBWSyIC&q=${inpQuery}&limit=${ITEMS_PER_PAGE}&offset=${Math.max((page-1)*ITEMS_PER_PAGE,0)}&rating=g&lang=en&bundle=messaging_non_clips`)
-    const resData = await response.json();
-    console.log(resData);
-    setPostState(resData.data);
-    setTotalItems(resData.pagination.total_count);
-  }
+const PostState = (props) => {
+  const api_key = process.env.REACT_APP_API;
+  const fetchSearchPost = async (inpQuery, page) => {
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&q=${inpQuery}&limit=${ITEMS_PER_PAGE}&offset=${Math.max(
+          (page - 1) * ITEMS_PER_PAGE,
+          0
+        )}&rating=g&lang=en&bundle=messaging_non_clips`
+      );
+      const resData = await response.json();
+      setPostState(resData.data);
+      setTotalItems(resData.pagination.total_count);
+    } catch (e) {
+      console.log(e);
+    }
+    setLoading(false);
+  };
 
-  const [postState,setPostState] = useState([]);
-  const [totalItems,setTotalItems] = useState(0);
+  const fetchTrendingPost = async (page) => {
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `https://api.giphy.com/v1/gifs/trending?api_key=${api_key}&limit=${ITEMS_PER_PAGE}&offset=${Math.max(
+          (page - 1) * ITEMS_PER_PAGE,0)}&rating=g&bundle=messaging_non_clips`
+      );
+      const resData = await response.json();
+      setPostState(resData.data);
+      setTotalItems(resData.pagination.total_count);
+    } catch (e) {
+      console.log(e);
+    }
+    setLoading(false);
+  };
 
-    return (
-        <postContext.Provider value={{postState,totalItems,fetchSearchPost}}>
-        {props.children}
-        </postContext.Provider>
-    );
-}
+  const [postState, setPostState] = useState([]);
+  const [totalItems, setTotalItems] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  return (
+    <postContext.Provider
+      value={{
+        postState,
+        totalItems,
+        fetchSearchPost,
+        fetchTrendingPost,
+        loading,
+        setLoading,
+      }}
+    >
+      {props.children}
+    </postContext.Provider>
+  );
+};
 
 export default PostState;

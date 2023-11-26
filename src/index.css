@@ -12,3 +12,7 @@
 body{
     background-color: var(--bg-primary);
 }
+
+.text-center{
+    text-align: center;
+}

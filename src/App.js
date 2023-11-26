@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import PostState from './components/context/post/postState';
 import UserState from './components/context/user/userState';
+import Navbar from './components/Navbar';
 
 function App() {
 
@@ -17,7 +18,9 @@ function App() {
     {
       path: "/",
       element: (
+        <Navbar>
         <Home></Home>
+        </Navbar>
       ),
     },
     {
