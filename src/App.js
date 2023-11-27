@@ -35,6 +35,12 @@ function App() {
         <Signup></Signup>
       ),
     },
+    {
+      path: "*",
+      element: (
+        <Login></Login>
+      ),
+    }
   ]);
 
   return (

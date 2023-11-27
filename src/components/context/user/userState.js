@@ -8,10 +8,12 @@ import {
 import userContext from "./userContext";
 
 const UserState = (props) => {
+  //login user with email and password
   const loginUser = async (email, password) => {
     try {
       const { user } = await signInWithEmailAndPassword(auth, email, password);
       if (user.email === email) {
+        // if user is authenticated update user state
         setUserState({
           name: user.displayName,
           email: user.email,
@@ -27,6 +29,7 @@ const UserState = (props) => {
     }
   };
 
+  // signup user using email pass and name
   const signupUser = async (email, password, name) => {
     try {
       const { user } = await createUserWithEmailAndPassword(
@@ -40,6 +43,7 @@ const UserState = (props) => {
           displayName: name,
         });
       }
+      //setting current user as loggedin user
       setUserState({
         name: user.displayName,
         email: user.email,
@@ -49,10 +53,12 @@ const UserState = (props) => {
     }
   };
 
+  //logout user
   const userLogout = () => {
     setUserState(null);
   };
 
+  //current user state contains email and name
   const [userState, setUserState] = useState(null);
 
   return (

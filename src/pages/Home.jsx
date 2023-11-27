@@ -24,6 +24,7 @@ function Home() {
   const handleSearch = async (e) => {
     setLoading(true);
     await fetchSearchPost(inpQuery, page);
+    console.log(postState)
     setPage(1);
     setLoading(false);
   };
@@ -60,7 +61,7 @@ function Home() {
               </div>
               <button onClick={(e) => handleSearch(e)}>Search</button>
             </div>
-            {postState && (
+            {postState.length ? (
               <div className="result">
                 {postState.map((item, index) => (
                   <div key={index} className="card">
@@ -78,8 +79,11 @@ function Home() {
                   </div>
                 ))}
               </div>
-            )}
-            {totalItems > ITEMS_PER_PAGE ? (
+            )
+          :
+          <div className="noquery">Search best free gifs!! :D</div>
+          }
+            {totalItems > ITEMS_PER_PAGE && (
               <div>
                 <Pagination
                   page={page}
@@ -87,8 +91,6 @@ function Home() {
                   totalItems={totalItems}
                 ></Pagination>
               </div>
-            ) : (
-              <div className="noquery">search something, it's free!! :D</div>
             )}
           </div>
         </div>

@@ -20,7 +20,8 @@ nav {
 }
 
 .active-index {
-  border-bottom: 1px solid rgb(126, 27, 27);
+  background-color: rgb(0,0,0,0.3);
+  border-bottom: 3px solid rgb(7, 7, 7);
 }
 
 .nav-btn {
